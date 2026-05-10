@@ -2188,51 +2188,80 @@ body[data-section="libanais"] .ambient-libanais {
 
 .section-title {
   isolation: isolate;
+  background:
+    radial-gradient(105% 95% at 16% 5%, rgba(255, 255, 255, 0.72) 0%, rgba(255, 255, 255, 0.28) 23%, transparent 45%),
+    linear-gradient(116deg, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.16) 13%, transparent 28%, transparent 52%, rgba(255, 255, 255, 0.28) 56%, transparent 68%),
+    linear-gradient(132deg, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0.12) 33%, rgba(0, 0, 0, 0.34) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.06)),
+    rgba(18, 18, 22, 0.28);
+  border-color: rgba(255, 255, 255, 0.48);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.68),
+    inset 0 18px 42px rgba(255, 255, 255, 0.18),
+    inset 0 -54px 110px rgba(0, 0, 0, 0.18),
+    0 26px 80px rgba(0, 0, 0, 0.16);
 }
 
 .section-title::after {
-  display: block;
-  inset: -34% -56%;
+  display: none;
+}
+
+.section-title .section-gloss {
+  position: absolute;
+  inset: -42% -62%;
   z-index: 3;
+  display: block;
+  padding: 0;
+  border-radius: 0;
   background:
     linear-gradient(
       104deg,
       transparent 0%,
-      transparent 36%,
-      rgba(255, 255, 255, 0.18) 43%,
-      rgba(255, 255, 255, 0.86) 49%,
-      rgba(255, 255, 255, 0.24) 55%,
-      transparent 66%,
+      transparent 30%,
+      rgba(255, 255, 255, 0.22) 38%,
+      rgba(255, 255, 255, 0.96) 48%,
+      rgba(255, 255, 255, 0.22) 58%,
+      transparent 70%,
       transparent 100%
     );
-  mix-blend-mode: screen;
-  opacity: 0;
-  transform: translate3d(-72%, 0, 0) skewX(-14deg);
+  color: transparent;
+  text-shadow: none;
+  box-shadow: none;
+  mix-blend-mode: normal;
+  opacity: 0.58;
+  pointer-events: none;
+  transform: translate3d(0, 0, 0) skewX(-14deg);
   animation: none;
   will-change: auto;
 }
 
-body[data-section="pizzas"] #pizzas .section-title::after,
-body[data-section="sandwiches"] #sandwiches .section-title::after,
-body[data-section="libanais"] #libanais .section-title::after,
-body[data-section="plats"] #plats .section-title::after,
-body[data-section="boissons"] #boissons .section-title::after {
-  animation: royalSectionSheen 1450ms cubic-bezier(0.16, 1, 0.3, 1) both;
+body[data-section="pizzas"] #pizzas .section-gloss,
+body[data-section="sandwiches"] #sandwiches .section-gloss,
+body[data-section="libanais"] #libanais .section-gloss,
+body[data-section="plats"] #plats .section-gloss,
+body[data-section="boissons"] #boissons .section-gloss {
+  animation: royalSectionSheen 2600ms cubic-bezier(0.16, 1, 0.3, 1) infinite;
 }
 
 @keyframes royalSectionSheen {
   0% {
-    opacity: 0;
-    transform: translate3d(-72%, 0, 0) skewX(-14deg);
+    opacity: 0.48;
+    transform: translate3d(-26%, 0, 0) skewX(-14deg);
   }
 
-  34% {
-    opacity: 0.86;
+  42% {
+    opacity: 0.82;
+    transform: translate3d(0%, 0, 0) skewX(-14deg);
+  }
+
+  74% {
+    opacity: 0.48;
+    transform: translate3d(26%, 0, 0) skewX(-14deg);
   }
 
   100% {
-    opacity: 0;
-    transform: translate3d(72%, 0, 0) skewX(-14deg);
+    opacity: 0.48;
+    transform: translate3d(26%, 0, 0) skewX(-14deg);
   }
 }
 
@@ -2257,8 +2286,11 @@ body[data-section="boissons"] #boissons .section-title::after {
 
   .section-title {
     background:
-      linear-gradient(135deg, rgba(0, 0, 0, 0.38), rgba(255, 255, 255, 0.18)),
-      rgba(255, 255, 255, 0.16);
+      radial-gradient(105% 95% at 16% 5%, rgba(255, 255, 255, 0.66) 0%, rgba(255, 255, 255, 0.25) 24%, transparent 46%),
+      linear-gradient(116deg, rgba(255, 255, 255, 0.36) 0%, rgba(255, 255, 255, 0.14) 13%, transparent 28%, transparent 52%, rgba(255, 255, 255, 0.24) 56%, transparent 68%),
+      linear-gradient(132deg, rgba(255, 255, 255, 0.34) 0%, rgba(255, 255, 255, 0.1) 38%, rgba(0, 0, 0, 0.36) 100%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.23), rgba(255, 255, 255, 0.05)),
+      rgba(18, 18, 22, 0.24);
   }
 
   .hero,
@@ -2271,7 +2303,7 @@ body[data-section="boissons"] #boissons .section-title::after {
   }
 
   .section-title::after {
-    display: block;
+    display: none;
   }
 
   .menu-item {
@@ -2329,7 +2361,7 @@ body[data-section="boissons"] #boissons .section-title::after {
 
   <!-- PIZZAS -->
   <div class="section" id="pizzas">
-    <div class="section-title">🍕 Pizzas <span>Mini    /   Moyenne</span></div>
+    <div class="section-title">🍕 Pizzas <span class="section-gloss" aria-hidden="true"></span><span>Mini    /   Moyenne</span></div>
     <div class="menu-item">
       <div class="item-info">
         <h3>Margherita</h3>
@@ -2502,7 +2534,7 @@ body[data-section="boissons"] #boissons .section-title::after {
 
   <!-- SANDWICHES -->
   <div class="section" id="sandwiches">
-    <div class="section-title">🥪 Sandwiches Tabouna</div>
+    <div class="section-title">🥪 Sandwiches Tabouna<span class="section-gloss" aria-hidden="true"></span></div>
 
     <div class="menu-item">
       <div class="item-info">
@@ -2573,7 +2605,7 @@ body[data-section="boissons"] #boissons .section-title::after {
 
   <!-- LIBANAIS -->
   <div class="section" id="libanais">
-    <div class="section-title">🌯 Libanais</div>
+    <div class="section-title">🌯 Libanais<span class="section-gloss" aria-hidden="true"></span></div>
 
     <div class="menu-item">
       <div class="item-info">
@@ -2748,7 +2780,7 @@ body[data-section="boissons"] #boissons .section-title::after {
 
   <!-- PLATS -->
   <div class="section" id="plats">
-    <div class="section-title">🍽️ Plats</div>
+    <div class="section-title">🍽️ Plats<span class="section-gloss" aria-hidden="true"></span></div>
 
     <div class="menu-item">
       <div class="item-info">
@@ -2832,7 +2864,7 @@ body[data-section="boissons"] #boissons .section-title::after {
 
   <!-- BOISSONS -->
   <div class="section" id="boissons">
-    <div class="section-title">🥤 Boissons</div>
+    <div class="section-title">🥤 Boissons<span class="section-gloss" aria-hidden="true"></span></div>
 
     <div class="menu-item">
       <div class="item-info">
