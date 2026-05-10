@@ -1039,13 +1039,13 @@ body {
 .ambient-pizzas {
   background-image:
     linear-gradient(120deg, rgba(255,255,255,0.18), rgba(255,59,48,0.18)),
-    url("https://images.unsplash.com/photo-1594007654729-407eedc4be65?auto=format&fit=crop&w=1800&q=82");
+    url("./assets/bg-pizzas.webp");
 }
 
 .ambient-sandwiches {
   background-image:
     linear-gradient(120deg, rgba(255,255,255,0.2), rgba(255,149,0,0.14)),
-    url("https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=1800&q=82");
+    url("./assets/bg-sandwiches.webp");
 }
 
 .ambient-libanais {
@@ -1058,13 +1058,13 @@ body {
 .ambient-plats {
   background-image:
     linear-gradient(120deg, rgba(255,255,255,0.2), rgba(162,132,94,0.15)),
-    url("https://images.unsplash.com/photo-1543352634-a1c51d9f1fa7?auto=format&fit=crop&w=1800&q=82");
+    url("./assets/bg-plats.webp");
 }
 
 .ambient-boissons {
   background-image:
     linear-gradient(120deg, rgba(255,255,255,0.22), rgba(0,122,255,0.13)),
-    url("https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=1800&q=82");
+    url("./assets/bg-boissons.webp");
 }
 
 body[data-section="pizzas"] .ambient-pizzas,
@@ -2186,6 +2186,56 @@ body[data-section="libanais"] .ambient-libanais {
   will-change: auto;
 }
 
+.section-title {
+  isolation: isolate;
+}
+
+.section-title::after {
+  display: block;
+  inset: -34% -56%;
+  z-index: 3;
+  background:
+    linear-gradient(
+      104deg,
+      transparent 0%,
+      transparent 36%,
+      rgba(255, 255, 255, 0.18) 43%,
+      rgba(255, 255, 255, 0.86) 49%,
+      rgba(255, 255, 255, 0.24) 55%,
+      transparent 66%,
+      transparent 100%
+    );
+  mix-blend-mode: screen;
+  opacity: 0;
+  transform: translate3d(-72%, 0, 0) skewX(-14deg);
+  animation: none;
+  will-change: auto;
+}
+
+body[data-section="pizzas"] #pizzas .section-title::after,
+body[data-section="sandwiches"] #sandwiches .section-title::after,
+body[data-section="libanais"] #libanais .section-title::after,
+body[data-section="plats"] #plats .section-title::after,
+body[data-section="boissons"] #boissons .section-title::after {
+  animation: royalSectionSheen 1450ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes royalSectionSheen {
+  0% {
+    opacity: 0;
+    transform: translate3d(-72%, 0, 0) skewX(-14deg);
+  }
+
+  34% {
+    opacity: 0.86;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(72%, 0, 0) skewX(-14deg);
+  }
+}
+
 @media (max-width: 760px) {
   .ambient-visual {
     inset: -5vh -16vw;
@@ -2221,7 +2271,7 @@ body[data-section="libanais"] .ambient-libanais {
   }
 
   .section-title::after {
-    display: none;
+    display: block;
   }
 
   .menu-item {
@@ -2929,11 +2979,11 @@ body[data-section="libanais"] .ambient-libanais {
   const sectionIdsForMotion = ['pizzas', 'sandwiches', 'libanais', 'plats', 'boissons'];
   const ambientScenes = {
     pizzas: {
-      image: 'linear-gradient(120deg, rgba(255,255,255,0.18), rgba(255,59,48,0.18)), url("https://images.unsplash.com/photo-1594007654729-407eedc4be65?auto=format&fit=crop&w=1200&q=62")',
+      image: 'linear-gradient(120deg, rgba(255,255,255,0.18), rgba(255,59,48,0.18)), url("./assets/bg-pizzas.webp")',
       position: '50% 50%'
     },
     sandwiches: {
-      image: 'linear-gradient(120deg, rgba(255,255,255,0.2), rgba(255,149,0,0.14)), url("https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=1200&q=62")',
+      image: 'linear-gradient(120deg, rgba(255,255,255,0.2), rgba(255,149,0,0.14)), url("./assets/bg-sandwiches.webp")',
       position: '54% 50%'
     },
     libanais: {
@@ -2941,11 +2991,11 @@ body[data-section="libanais"] .ambient-libanais {
       position: '62% 52%'
     },
     plats: {
-      image: 'linear-gradient(120deg, rgba(255,255,255,0.2), rgba(162,132,94,0.15)), url("https://images.unsplash.com/photo-1543352634-a1c51d9f1fa7?auto=format&fit=crop&w=1200&q=62")',
+      image: 'linear-gradient(120deg, rgba(255,255,255,0.2), rgba(162,132,94,0.15)), url("./assets/bg-plats.webp")',
       position: '50% 50%'
     },
     boissons: {
-      image: 'linear-gradient(120deg, rgba(255,255,255,0.22), rgba(0,122,255,0.13)), url("https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=1200&q=62")',
+      image: 'linear-gradient(120deg, rgba(255,255,255,0.22), rgba(0,122,255,0.13)), url("./assets/bg-boissons.webp")',
       position: '52% 50%'
     }
   };
@@ -2972,7 +3022,7 @@ body[data-section="libanais"] .ambient-libanais {
 
     let activeSectionId = sectionIdsForMotion[0];
     let activeSection = document.getElementById(activeSectionId);
-    const scrollAnchor = window.scrollY + Math.min(window.innerHeight * 0.22, 170);
+    const scrollAnchor = window.scrollY + Math.min(window.innerHeight * 0.52, 420);
 
     for (let i = 0; i < sectionIdsForMotion.length; i++) {
       const section = document.getElementById(sectionIdsForMotion[i]);
